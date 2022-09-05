@@ -3,13 +3,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-// import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 
-// @ExtendWith(MockitoExtension.class)
 class RestaurantTest {
     Restaurant restaurant;
     //REFACTOR ALL THE REPEATED LINES OF CODE
@@ -66,22 +66,33 @@ class RestaurantTest {
 
 
 
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>Item Total<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>Total Order Cost<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
-    public void getOrderTotal_should_return_0_if_no_items_are_ordered() {
-        int orderTotal = 388; //  creted a for failing test for further development
+    public void getOrderCost_should_return_0_if_no_items_are_ordered() {
+        List<String> orderedItems = new ArrayList<>();
+        int orderTotal = restaurant.getOrderCost(orderedItems);
         assertEquals(0, orderTotal);
     }
 
     @Test
-    public void getOrderTotal_should_return_total_amount_of_ordered_items() {
-        int orderTotal = 0; //  creted a for failing test for further development
-        assertEquals(388, orderTotal);
+    public void getOrderCost_should_return_0_if_invalid_items_are_ordered() {
+        List<String> orderedItems = new ArrayList<>();
+        orderedItems.add("Sweet potato soup");
+        orderedItems.add("Chicken lasagne");
+        int orderTotal = restaurant.getOrderCost(orderedItems);
+        assertEquals(0, orderTotal);
     }
 
+    @Test
+    public void getOrderCost_should_return_total_amount_of_ordered_items() {
+        List<String> orderedItems = new ArrayList<>();
+        orderedItems.add("Sweet corn soup");
+        orderedItems.add("Vegetable lasagne");
+        int orderTotal = restaurant.getOrderCost(orderedItems);
+        assertEquals((119 + 269), orderTotal);
+    }
         
-    //<<<<<<<<<<<<<<<<<<<<<<<Item Total>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //<<<<<<<<<<<<<<<<<<<<<<<Total Order Cost>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 }
 
