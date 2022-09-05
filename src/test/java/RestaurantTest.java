@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
+// import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -70,4 +70,30 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>Item Total<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @Test
+    public void getOrderTotal_should_return_0_if_no_items_are_ordered() {
+        int orderTotal = 388; // Temp, for failing test
+        assertEquals(0, orderTotal);
+    }
+
+    @Test
+    public void getOrderTotal_should_return_total_amount_for_ordered_items() {
+        int orderTotal = 0; // Temp, for failing test
+        assertEquals(388, orderTotal);
+    }
+
+        
+    //<<<<<<<<<<<<<<<<<<<<<<<Item Total>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 }
+
+
+
+
